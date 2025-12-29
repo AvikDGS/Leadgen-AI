@@ -1,0 +1,7 @@
+{
+  "name": "LeadGen AI Pro",
+  "description": "An advanced AI-powered lead generation and CRM platform that identifies business opportunities using Google Maps and Search grounding.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
