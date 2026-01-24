@@ -1,15 +1,18 @@
 
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LeadGen AI Pro | Proxima Intelligence</title>
+    <title>PipelineX AI | Growth Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
+      // Shim process for browser environment
+      window.process = { env: { API_KEY: '' } };
+      
       tailwind.config = {
         darkMode: 'class',
         theme: {
@@ -18,12 +21,44 @@
               sans: ['Plus Jakarta Sans', 'sans-serif'],
             },
             colors: {
-              obsidian: '#0a0a0c',
-              slate: {
-                950: '#050505',
-                900: '#0a0a0c',
-                800: '#111116',
-                700: '#1a1a24'
+              brand: {
+                primary: '#f9a825', 
+                secondary: '#ffcc80', 
+                accent: '#2d2d2d', 
+                bg: '#fcfcfc', 
+                surface: '#ffffff', 
+              }
+            },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shimmer': 'shimmer 2s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'reveal': 'reveal 0.8s cubic-bezier(0, 0, 0.2, 1) forwards',
+              'blob': 'blob 7s infinite',
+              'marquee': 'marquee 30s linear infinite',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-15px)' },
+              },
+              reveal: {
+                '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' },
+                '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+              },
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-50%)' },
               }
             }
           }
@@ -32,34 +67,55 @@
     </script>
     <style>
       body {
-        background-color: #0a0a0c;
-        color: #f8fafc;
-        background-image: 
-          radial-gradient(circle at 50% -20%, #312e81 0%, transparent 45%),
-          radial-gradient(circle at 100% 100%, #1e1b4b 0%, transparent 40%),
-          linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-        background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        background-color: #f9f9f9;
+        color: #2d2d2d;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
       }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0a0a0c; }
-      ::-webkit-scrollbar-thumb { background: #1e1b4b; border-radius: 10px; }
-      ::-webkit-scrollbar-thumb:hover { background: #312e81; }
+      .main-gradient {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(circle at 0% 0%, #fdf4e3 0%, #fcfcfc 50%),
+                    radial-gradient(circle at 100% 100%, #fff7e6 0%, #fcfcfc 50%);
+      }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #f9a825; }
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .stagger-item {
+        opacity: 0;
+        animation: reveal 0.6s cubic-bezier(0, 0, 0.2, 1) forwards;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      .glow-on-hover:hover {
+        box-shadow: 0 0 20px rgba(249, 168, 37, 0.3);
+      }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "recharts": "https://esm.sh/recharts@^3.6.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
-  }
-}
-</script>
-</head>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.2.3",
+        "react/": "https://esm.sh/react@19.2.3/",
+        "react-dom": "https://esm.sh/react-dom@19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@19.2.3/",
+        "lucide-react": "https://esm.sh/lucide-react@0.462.0",
+        "recharts": "https://esm.sh/recharts@2.12.7",
+        "@google/genai": "https://esm.sh/@google/genai@1.34.0"
+      }
+    }
+    </script>
+  </head>
   <body>
+    <div class="main-gradient"></div>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

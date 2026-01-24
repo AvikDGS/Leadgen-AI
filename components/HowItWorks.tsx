@@ -5,46 +5,43 @@ import { Target, Zap, Search, ShieldCheck } from 'lucide-react';
 export const HowItWorks: React.FC = () => {
   const steps = [
     {
-      icon: <Target className="text-indigo-400" size={32} />,
-      title: "Identify Market",
-      desc: "Input your target industry and location. Proxima targets high-intent niches with local presence."
+      icon: <Target className="text-brand-primary" size={28} />,
+      title: "Set Your Target",
+      desc: "Define your niche and location. We'll find local businesses ripe for optimization."
     },
     {
-      icon: <Search className="text-purple-400" size={32} />,
-      title: "Deep Grounding",
-      desc: "Our AI scrapes Google Maps & Search to build a profile including owner contact info and GMB links."
+      icon: <Search className="text-blue-500" size={28} />,
+      title: "AI Market Scan",
+      desc: "Our AI scours Google Maps and social nodes to find valid contact points."
     },
     {
-      icon: <Zap className="text-amber-400" size={32} />,
-      title: "Gap Intelligence",
-      desc: "Neural analysis detects missing websites, SEO failures, and unoptimized GMB listings in seconds."
+      icon: <Zap className="text-amber-500" size={28} />,
+      title: "Spot Gaps",
+      desc: "Instantly identify missing websites, poor SEO, or neglected social profiles."
     },
     {
-      icon: <ShieldCheck className="text-emerald-400" size={32} />,
-      title: "Pipeline Sync",
-      desc: "Export verified opportunities directly into the CRM to manage outreach and track potential revenue."
+      icon: <ShieldCheck className="text-emerald-500" size={28} />,
+      title: "Close Deals",
+      desc: "Save your favorites, export them, and start your outreach with high-intent data."
     }
   ];
 
   return (
-    <section className="space-y-12">
+    <section className="space-y-12 max-w-7xl mx-auto">
       <div className="text-center space-y-4">
-        <h3 className="text-xs font-black text-indigo-400 uppercase tracking-[0.3em]">Operational Protocol</h3>
-        <h2 className="text-4xl font-extrabold text-white tracking-tight">How the Engine Works</h2>
-        <p className="text-slate-500 font-medium">A systematic approach to digital market dominance.</p>
+        <h3 className="text-xs font-black text-brand-primary uppercase tracking-[0.3em]">The Workflow</h3>
+        <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">How It Works</h2>
+        <p className="text-gray-400 font-bold text-lg">Simple steps to 10x your prospecting speed.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {steps.map((step, idx) => (
-          <div key={idx} className="relative group p-8 bg-white/5 border border-white/5 rounded-[2.5rem] hover:bg-white/[0.08] hover:border-indigo-500/30 transition-all duration-500">
-            <div className="absolute -top-4 -left-4 w-12 h-12 bg-[#0a0a0c] border border-white/10 rounded-2xl flex items-center justify-center text-xs font-black text-slate-500 group-hover:text-indigo-400 transition-colors">
-              0{idx + 1}
-            </div>
-            <div className="mb-6 p-4 bg-[#0a0a0c] border border-white/5 rounded-2xl w-fit shadow-xl group-hover:scale-110 transition-transform duration-500">
+          <div key={idx} className="group p-8 bg-white rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 text-center flex flex-col items-center">
+            <div className="mb-6 w-16 h-16 bg-gray-50 rounded-3xl flex items-center justify-center group-hover:scale-110 group-hover:bg-brand-primary/5 transition-all">
               {step.icon}
             </div>
-            <h4 className="text-xl font-bold text-white mb-3 tracking-tight">{step.title}</h4>
-            <p className="text-sm text-slate-500 leading-relaxed font-medium">{step.desc}</p>
+            <h4 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{step.title}</h4>
+            <p className="text-sm text-gray-400 leading-relaxed font-bold">{step.desc}</p>
           </div>
         ))}
       </div>

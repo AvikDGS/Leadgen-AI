@@ -17,6 +17,13 @@ export interface BusinessOpportunity {
   ownerName?: string;
   ownerPhone?: string;
   gmbLink?: string;
+  leadSource: 'Google Maps' | 'Yelp' | 'LinkedIn' | 'Instagram' | 'Facebook' | 'Yellow Pages' | 'Direct';
+  socialLinks?: {
+    linkedin?: string;
+    instagram?: string;
+    facebook?: string;
+    yelp?: string;
+  };
   currencySymbol: string;
   estimatedRevenue: number;
   businessSize: 'Boutique' | 'Growth' | 'Enterprise';
